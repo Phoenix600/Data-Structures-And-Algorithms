@@ -1,0 +1,1 @@
+gcc .\main.c .\lib\source\stack_array.c -o .\build\stack.exe  
