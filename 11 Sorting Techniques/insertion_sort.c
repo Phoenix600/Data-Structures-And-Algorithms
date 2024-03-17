@@ -28,23 +28,21 @@ void insertionSort(int A[], int size){
 
 void insertionSortOnLL(struct Node** head){
     struct Node* p = *head;
-    struct Node* q = NULL;
-    int key;
+    struct Node* temp;
+    struct Node* q;
+    int data = p->data;
+    struct Node* sortedList = p;
+    while(sortedList != NULL){
+        q = sortedList->next;
 
-    while (p)
-    {
-        key = p->data;
-        q = p;
-
-        while (q->data < key)
-        {
-            q = p;
-            p = p->next;
+        while(q->data > data){
+            temp = q;
+            q->next = sortedList;
+            sortedList->next = temp->next;
+            q = q->next;
         }
-        
     }
-    
-    
+
 }
     
 
@@ -98,7 +96,7 @@ int main(){
     int B[] = {100,90,80,0,12,34};
     struct Node* head = createLLFromArray(B,6);
     displayLL(head);
-    // insertionSortOnLL(&head);
+    insertionSortOnLL(&head);
     displayLL(head);    
     return 0;
 }
