@@ -22,6 +22,23 @@ void selectionSort(int A[], int size){
     }
 }
 
+void getKSmallestElement(int A[], int size, int k)
+{
+    int minIndex;
+    for(int i=0; i<=k; i++)
+    {   minIndex = i;
+        for(int j=i+1; j<size; j++)
+        {
+            if(A[minIndex] > A[j])
+            {
+                minIndex = j;
+            }
+        }
+
+        swap(&A[i],&A[minIndex]);
+    }
+}
+
 void print(int A[], int size){
     printf("Array Content = [");
     for(int i=0; i<size; i++)
@@ -34,7 +51,9 @@ void print(int A[], int size){
 int main(){
     int A[] = {100,90,80,34,-1,0};
     print(A,6);
-    selectionSort(A,6);
+    // selectionSort(A,6);
+    getKSmallestElement(A,6,1);
+    printf("Second Smallest Smallest : %d \n",A[1]);
     print(A,6);
     return 0;
 }
